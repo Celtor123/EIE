@@ -20,8 +20,8 @@ public class Exercicio1 extends Thread{
  
     public static void main(String[] args) {
         
-    new Exercicio1("p").start();
-      new Exercicio1("o").start();   
+    new Exercicio1("hilo1").start();
+      new Exercicio1("hilo2").start();   
     }
     
 }
