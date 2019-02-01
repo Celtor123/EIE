@@ -1,9 +1,6 @@
 
 package exercicios;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class Exercicio1 extends Thread{
    
 
@@ -16,10 +13,11 @@ public class Exercicio1 extends Thread{
         for(int i=0;i<10;i++){
           
         System.out.println(i+getName());
-            double r=Math.random();
-           long g=(long) r;
-            try {
+            long g= (long) (Math.random()*2000);
+           
+              try {
                 Thread.sleep(g);
+                
             } catch (InterruptedException ex) {
                 System.out.println("ERROR: "+ex);
             }
@@ -29,8 +27,8 @@ public class Exercicio1 extends Thread{
  
  
     public static void main(String[] args) {        
-    new Exercicio1("h").start();
-      new Exercicio1("i").start();   
+    new Exercicio1("h1").start();
+      new Exercicio1("h2").start();   
     }
     
 }
