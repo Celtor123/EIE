@@ -2,7 +2,7 @@
 package exercicios;
 
 public class Exercicio1 extends Thread{
-   Thread r;
+   
 
     public Exercicio1(String p) {
       super(p);
@@ -18,10 +18,9 @@ public class Exercicio1 extends Thread{
     
  
  
-    public static void main(String[] args) {
-        
-    new Exercicio1("hilo1").start();
-      new Exercicio1("hilo2").start();   
+    public static void main(String[] args) {        
+    new Exercicio1("h").start();
+      new Exercicio1("i").start();   
     }
     
 }
