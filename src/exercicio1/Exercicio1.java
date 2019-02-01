@@ -1,21 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package exercicio1;
 
-/**
- *
- * @author oracle
- */
-public class Exercicio1 {
+public class Exercicio1 extends Thread{
+   Thread r;
 
-    /**
-     * @param args the command line arguments
-     */
+    public Exercicio1(String p) {
+      super(p);
+       
+    }
+ 
+    public void run(){
+        for(int i=0;i<10;i++){
+          
+        System.out.println(i+getName());
+    }  
+        }
+    
+ 
+ 
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+    new Exercicio1("p").start();
+      new Exercicio1("o").start();   
     }
     
 }
