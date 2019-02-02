@@ -1,51 +1,48 @@
 
 package exercicios;
 
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Exercicio3 implements Runnable{
-Thread t;
 
-    public Exercicio3(String nome) {
-        t= new Thread(this,nome);
-    }
-    public static Exercicio3 fillo(String nome){
-        Exercicio3 y= new Exercicio3(nome);
-        y.t.start();
-        return y;
+public final class Exercicio3 extends Thread{   
+
+    public Exercicio3() {
+         
     }
     
-
-    
-    public void run(){           
-        
-        System.out.println(t.getName()+"iniciando");
-        
+    public void run(){  
+       Scanner a= new Scanner(System.in);
+       String h=a.next();
+       setName(h);
+        System.out.println(getName()+" iniciando");
+          
         for(int i=1;i<10;i++){
-            System.out.println(i+t.getName());
-        }try {
-            Thread.sleep(450);
-    } catch (InterruptedException ex) {
-        System.out.println("error:"+ex);
+            System.out.println(i+""+getName());
+        }        
     }
-    }
-    public static void main(String[] args) {
-        Exercicio3 a=Exercicio3.fillo("eeee");
-        Exercicio3 b=Exercicio3.fillo("ra");
-        Exercicio3 c=Exercicio3.fillo("bon");
-         for (int i = 0; i < 50; i++) {
-             System.out.print(".");
-             try {
-                 Thread.sleep(100);
-             } catch (InterruptedException exc) {
-                 System.out.println("Hilo principal interrumpido.");
-             }
-         }
-         System.out.println("Finalizado");
-    }
+   
+
     
-}
+    public static void main(String[] args) {
+        try {
+            Exercicio3 h= new Exercicio3();
+            Exercicio3 p=new Exercicio3();
+            Exercicio3 q=new Exercicio3();
+            h.join();
+            h.start();            
+            p.join();
+            p.start();           
+            q.join();
+            q.start();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Exercicio3.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+      }
+    }
+
 
 //Realizar un programa que cree un fío, que a súa vez cree outro fío, e así consecutivamente, ata un total de cinco fíos. 
 //Cada fío debe presentar o seu nome indicando que comenzou, crear o seu fío fillo e presentar o seu nome 10 veces indicando que se está procesando, 
