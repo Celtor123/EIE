@@ -1,5 +1,5 @@
 
-package exercicios.exercicio4;
+package exercicios;
 
 public class Exercicio4 extends Thread {  
 int cual =1;
