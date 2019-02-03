@@ -28,11 +28,11 @@ public class Exercicio5 extends Thread {
        a.setPriority(MIN_PRIORITY);
        b.setPriority(MAX_PRIORITY);
         b.start();               
-//        try {
-//            b.join();
-//        } catch (InterruptedException ex) {
-//            System.out.println("Error"+ex);
-//        }
+        try {
+            b.join();
+        } catch (InterruptedException ex) {
+            System.out.println("Error"+ex);
+        }
        a.start();     
     }}
 
