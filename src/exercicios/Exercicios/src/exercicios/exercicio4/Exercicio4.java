@@ -10,7 +10,6 @@ public void x(){
     int impares=0;
      for(cual=1;cual<1000;cual=cual+2){
          impares++;
-       System.out.println(cual);
    }cual=2;
     System.out.println("impares. "+impares);
 }
@@ -18,7 +17,6 @@ public void y(){
     int pares=0;
     for(cual=2;cual<=1000;cual=cual+2){
         pares++;
-        System.out.println(cual);
     }cual=0;
     System.out.println("pares: "+pares);
 }
@@ -26,11 +24,9 @@ public void z(){
     int dostres=0;
    while(cual<=1000){
        if(cual%10==2){
-           System.out.println(cual);
            dostres++;
        }
        else if(cual%10==3){
-           System.out.println(cual);
            dostres++;
        }cual++;
    }System.out.println("Cantidad de números acabdos en 2 y 3: "+dostres);
@@ -38,13 +34,11 @@ public void z(){
 }
 @Override
 public void run() { 
-    if(cual==1){
+     if(cual==1){
   x();
-   System.out.println(cual);
     }
      if(cual==2){
   y();
-   System.out.println(cual);
     }
      if (cual==0){
         z();
