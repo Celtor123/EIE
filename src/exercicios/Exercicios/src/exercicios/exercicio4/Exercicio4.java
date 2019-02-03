@@ -7,27 +7,33 @@ public Exercicio4() {
 super();
 }  
 public void x(){
+    int impares=0;
      for(cual=1;cual<1000;cual=cual+2){
+         impares++;
        System.out.println(cual);
    }cual=2;
+    System.out.println("impares. "+impares);
 }
 public void y(){
+    int pares=0;
     for(cual=2;cual<=1000;cual=cual+2){
+        pares++;
         System.out.println(cual);
     }cual=0;
+    System.out.println("pares: "+pares);
 }
 public void z(){
-    int dos=0;
+    int dostres=0;
    while(cual<=1000){
        if(cual%10==2){
            System.out.println(cual);
-           dos++;
+           dostres++;
        }
        else if(cual%10==3){
            System.out.println(cual);
-           dos++;
+           dostres++;
        }cual++;
-   }System.out.println(dos);
+   }System.out.println("Cantidad de números acabdos en 2 y 3: "+dostres);
    cual=1;
 }
 @Override
