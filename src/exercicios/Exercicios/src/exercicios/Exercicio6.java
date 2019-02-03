@@ -11,6 +11,14 @@ package exercicios;
  */
 public class Exercicio6 {
     
+    public class r extends Thread{
+    public void a(){
+        
+    }
+}
+    public static void main(String[] args) {
+        
+    }      
 }
 
 //Simular a caixa dunha empresa con dous fíos. 

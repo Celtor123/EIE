@@ -11,6 +11,10 @@ package exercicios;
  */
 public class Exercicio7 {
     
+    public static void main(String[] args) {      
+        
+    }
+    
 }
 
 //Programa que simule un buzón de correo (recurso compartido), de xeito que se poida leer unha mensaje ou envialo. 
