@@ -1,16 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package exercicios;
 
-/**
- *
- * @author Juan
- */
-public class Exercicio5 {
+
+public class Exercicio5 extends Thread {
     
+    public void run(){
+        
+    }
+    
+    public static void main(String[] args) {
+        
+    }
 }
 
 //Escribe unha clase que cree dous fíos e force que a escritura do segundo sexa sempre anterior á escritura por pantalla do primeiro.     
