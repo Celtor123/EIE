@@ -8,53 +8,85 @@ import javax.swing.JOptionPane;
 
 public class Buzon extends Thread {
     Exercicio7 r;
-    ArrayList <String>Mensaje= new ArrayList<>();
-    public String mensaje;
-
+     String mensaje;
+          ArrayList <String>Mensaje= new ArrayList<>();  
+    private int variable;
     public Buzon(Exercicio7 r) {
         this.r = r;
     }
-    public synchronized void escribir(){       
-        try {
-            wait();
-            do{
-                mensaje=JOptionPane.showInputDialog("Escriba \n escriba exit para salir");
+      public synchronized void escribir(){         
+      
+        
+         
+          if(Mensaje.isEmpty()){
+                mensaje=JOptionPane.showInputDialog("Escriba");
                 Mensaje.add(mensaje);
-            }while(!mensaje.equals("exit"));
-            System.out.println("FIN de escritura");
-            
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Buzon.class.getName()).log(Level.SEVERE, null, ex);
+                     
+            System.out.println("FIN de escritura");  
+        correo();}else{
+              error();
+          }}
+    public synchronized void correo(){
+        Object[] Botones={"Enviar Mensaxe","Ler Mensaxe","Saír"};
+     
+        variable=JOptionPane.showOptionDialog(null, "Elixa","Centro de operacións", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, Botones, Botones[0]);
+     
+        
+        if(variable==0){
+            escribir();
+          }  
+        if(variable==1){   
+        ler();
         }
- }
-    public synchronized void ler(){
-        try {
-             wait();
-            System.out.println("Mensaxe: ");
-            for(int i=0;i<Mensaje.size();i++){
-                System.out.println(Mensaje.get(i));
+        else{
+            try {
+              interrupt();
+            } catch (Throwable ex) {
+                Logger.getLogger(Buzon.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Buzon.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @Override
+    protected void finalize() throws Throwable {
+        JOptionPane.showMessageDialog(null,"Ata logo"); 
+    interrupt();}
+   
+    public synchronized void error(){            
+            JOptionPane.showMessageDialog(null,"Error: Xa hai mensaxes");
+        Object[] botonsdous={"eliminar o mensaxe","Voltar a menu principal","Saír"};
+       int recu= JOptionPane.showOptionDialog( null,"Que quiere hacer?", "Centro de recuperarión", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null,botonsdous,botonsdous[0]);
+       switch(recu){
+           case 0:  
+               Mensaje.clear();interrupt();correo();
+               break;
+               case 1:correo();
+               break;
+               case 2:interrupt();
+               break;
+       }
+    }
+   
+  
+    public synchronized void ler(){
+      
+        
+            if(Mensaje.size()<=1){
+           
+            for(int i=0;i<Mensaje.size();i++){
+               JOptionPane.showMessageDialog(null,Mensaje.get(i));
+            }
+       correo();}else{
+                error();
+            }
+        }
+   
    
     
     @Override
     public void run(){
-        synchronized(Mensaje){
-            if(!Mensaje.isEmpty()){
-                try {
-                    wait();
-                    Mensaje.clear();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Buzon.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }else{
-                notifyAll();
-            }
-        }
+       JOptionPane.showMessageDialog(null,"Benvido ao teu correo\n ");
+       correo();
           
           
     }
