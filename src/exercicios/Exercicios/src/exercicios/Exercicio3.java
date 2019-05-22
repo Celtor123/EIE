@@ -7,38 +7,38 @@ import java.util.logging.Logger;
 
 
 public final class Exercicio3 extends Thread{   
-
+    static int contador=0;
+    Exercicio3 exercicio;
     public Exercicio3() {
-         
+         contador++;
+         this.start();
+         if (contador<5){
+             exercicio=new Exercicio3();
+         }
     }
     
     public void run(){  
-       Scanner a= new Scanner(System.in);
-       String h=a.next();
-       setName(h);
-        System.out.println(getName()+" iniciando");
+   
+        
           
         for(int i=1;i<10;i++){
-            System.out.println(i+""+getName());
-        }        
+            System.out.println(i+""+this.getName());
+        }      
+        if(this.getName().equals("Thread-4")){
+            System.out.println("fin");
+        }else{
+            try {
+                exercicio.join();
+            } catch (InterruptedException ex) {
+                System.out.println("Excepciom: "+ex);
+            }
+        }
     }
    
 
     
     public static void main(String[] args) {
-        try {
-            Exercicio3 h= new Exercicio3();
-            Exercicio3 p=new Exercicio3();
-            Exercicio3 q=new Exercicio3();
-            h.join();
-            h.start();            
-            p.join();
-            p.start();           
-            q.join();
-            q.start();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Exercicio3.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Exercicio3 exercicio3 = new Exercicio3();
          
       }
     }
