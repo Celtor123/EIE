@@ -1,20 +1,81 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package exercicios;
 
 /**
  *
- * @author Juan
+ * @author Celso
  */
-public class Exercicio8 {
-    public static void main(String[] args) {      
-        
+public class Exercicio8 extends Thread{
+    
+    String animal;
+    public Exercicio8(String animal) {
+        this.animal=animal;
+        this.start();
     }
     
-}
+    @Override
+    public void run(){
+        int casiña = 1;
+        String g = null;
+         boolean f;
+         while(casiña<70){
+             int valorentero = (int) Math.floor(Math.random()*(100-1+1)+1);
+        if("Lebre".equals(animal)){
+            g="l";
+        if(valorentero<20){//dorme
+            System.out.println("dorme");
+        }
+        if(valorentero>=20 && valorentero<40){//gran salto
+            casiña=casiña+9;
+        }
+        if(valorentero>=40&&valorentero<50){//esvaron
+            casiña=casiña-12;
+        }
+        if(valorentero>=50&&valorentero<80){//pequeno salto
+            casiña=casiña+1;
+        }
+        if(valorentero>=80){ // esvarón pequeno
+            casiña=casiña-2;
+        }
+        
+        }
+        if("Tartaruga".equals(animal)){
+            g="t";
+        if(valorentero<50){
+            casiña=casiña+3;
+        }
+        if(valorentero>=50&&valorentero<70){
+            casiña=casiña-6;
+        }
+        if(valorentero<70&&valorentero<=100){
+            casiña=casiña+1;
+        }}
+        if(casiña<1){
+            casiña=1;
+        }
+             System.out.println(casiña+g); 
+         }
+             switch(g){
+                
+             case "l":
+                  if(f=true){
+             System.out.println("Ganadora a lebre");
+             f=false;
+                  }else{System.out.println("Perde a lebre");}
+             break;
+             case "t":
+             if(f=true){
+                 System.out.println("Ganadora a Tartaruga"); 
+                 f=false;
+                  }else{System.out.println("Perde a tartaruga");             
+                  }
+                     break; 
+         }
+    }
+    public static void main(String[] args) {   
+        Exercicio8 a= new Exercicio8("Lebre");
+        Exercicio8 b= new Exercicio8("Tartaruga");
+}}
 
 //Implementa unha simulación da fabula que conta a carreira entre a lebre e a tartaruga. 
 //Para facelo máis interesante a carreira será costa arriba por unha pista esvaradía, de modo 
